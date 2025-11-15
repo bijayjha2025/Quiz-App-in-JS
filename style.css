@@ -1,0 +1,27 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(270deg, rgb(149, 247, 149), rgb(123, 212, 248));
+}
+.mainContainer{
+    text-align: center;
+    align-items: center;
+    padding: 30px auto;
+}
+.choicesButtons{
+    padding: 10px 0px;
+    border-color: azure;
+    border-radius: 30px;
+}
+h1{
+    color: rgb(188, 28, 28);
+    padding-top: 20px;
+}
+h2{
+    font-weight: 600;
+    font-style: italic;
+}
