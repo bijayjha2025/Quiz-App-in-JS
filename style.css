@@ -50,10 +50,12 @@ body{
 
 .choicesButtons button:hover{
     background-color: rgb(212, 240, 253);
+    color: green;
 }
 
 .choicesButtons button:active{
     background-color: rgb(247, 247, 236);
+    color: black;
 }
 
 #nextButton{
