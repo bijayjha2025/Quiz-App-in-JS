@@ -34,22 +34,79 @@ const quizData = [
     ];
 
 const questionEl = document.querySelector(".questionBox h2");
-const buttonContainer = document.querySelector(".choicesButtons");
+const optionButton = document.querySelector(".choicesButtons");
 const nextButton = document.getElementById("nextButton");
 
 
-let currentIndex= 0;
+let currentQuestionIndex= 0;
 let yourScore = 0;
+let answered= false;
 
-function quizSection(){
-    currentQuestion= 0;
+let optionButtons= [];
+
+function startQuiz(){
+    currentQuestionIndex= 0;
     yourScore= 0;
-    nextButton.innerHTML= "Next";
     displayQuestion();
 }
 
-function displayQuestion(){
-    let currentQuestion = questionBox[currentQuestion];
-    let questionNumber = currentQuestion + 1;
+function displayQuestion() {
+    answered = false;
+    nextButton.style.display = "none";
 
+    optionButton.innerHTML = ""; // clear previous options
+
+    const currentQuestion = quizData[currentQuestionIndex];
+
+    let questionNumber = currentQuestionIndex + 1;
+    questionEl.innerHTML = questionNumber + ". " + currentQuestion.question;
+
+    currentQuestion.choices.forEach((choice, index) => {
+        const button = document.createElement("button");
+        button.innerHTML = choice;
+        button.classList.add("option");
+        button.onclick = () => selectAnswer(index);
+        optionButton.appendChild(button);
+    });
 }
+
+function selectAnswer(selectedIndex){
+
+       if (answered) return;
+    answered = true;
+
+    const correctIndex = quizData[currentQuestionIndex].answer;
+    const buttons = optionButton.querySelectorAll("button");
+
+    buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === correctIndex) btn.style.background = "lightgreen";
+        if (i === selectedIndex && selectedIndex !== correctIndex)
+            btn.style.background = "salmon";
+    });
+
+    if(selectedIndex === correctIndex){
+        yourScore++; 
+    }
+
+    nextButton.style.display= "block";
+}
+
+nextButton.addEventListener("click", ()=>{
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex < quizData.length){
+        displayQuestion();
+    }
+    else {
+        showResult();
+    }
+});
+
+function showResult(){
+    document.querySelector(".questionBox").innerHTML = 
+    `<h2>Your score:${yourScore}/${quizData.length}</h2>
+    <button onclick= "location.reload()">Restart Quiz</button>`;
+}
+
+startQuiz();
