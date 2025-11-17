@@ -78,3 +78,27 @@ body{
 #nextButton:active{
     background: rgb(212, 241, 169);
 }
+
+#restartButton{
+    cursor: pointer;
+    display: block;
+    width: 170px;
+    background-color: rgb(210, 247, 192);
+    border: 0;
+    border-radius: 8px;
+    color: rgb(11, 0, 0);
+    font-weight: 600;
+    padding: 12px;
+    margin: 25px auto 0;
+    font-size: 17px;
+    transition: transformation 0.3s ease, background-color 0.3s ease;
+}
+
+#restartButton:hover{
+    transform: scale(0.98);
+    background-color: rgb(183, 235, 106)
+}
+
+#restartButton:active{
+    background-color: rgb(147, 251, 216);
+}

@@ -106,7 +106,9 @@ nextButton.addEventListener("click", ()=>{
 function showResult(){
     document.querySelector(".questionBox").innerHTML = 
     `<h2>Your score:${yourScore}/${quizData.length}</h2>
-    <button onclick= "location.reload()">Restart Quiz</button>`;
+    <button id= "restartButton">Restart Quiz</button>`;
+
+    document.getElementById("restartButton").addEventListener("click", startQuiz);
 }
 
 startQuiz();
