@@ -33,9 +33,9 @@ const quizData = [
     }
     ];
 
-const questionEl = document.querySelector(".questionBox h2");
-const optionButton = document.querySelector(".choicesButtons");
-const nextButton = document.getElementById("nextButton");
+let questionEl = document.querySelector(".questionBox h2");
+let optionButton = document.querySelector(".choicesButtons");
+let nextButton = document.getElementById("nextButton");
 
 
 let currentQuestionIndex= 0;
@@ -47,6 +47,22 @@ let optionButtons= [];
 function startQuiz(){
     currentQuestionIndex= 0;
     yourScore= 0;
+
+    document.querySelector(".questionBox").innerHTML=`
+    <h2>Here will be question</h2>
+    <div class="choicesButtons"></div>
+    <button id="nextButton">Next</button>
+    `;
+
+    questionEl = document.querySelector(".questionBox h2");
+    optionButton = document.querySelector(".choicesButtons");
+    nextButton = document.getElementById("nextButton");
+
+    optionButton.style.display = "block";
+    nextButton.style.display = "none";
+
+    nextButton.addEventListener("click", nextHandler);
+
     displayQuestion();
 }
 
@@ -54,12 +70,10 @@ function displayQuestion() {
     answered = false;
     nextButton.style.display = "none";
 
-    optionButton.innerHTML = ""; // clear previous options
+    optionButton.innerHTML = "";
 
     const currentQuestion = quizData[currentQuestionIndex];
-
-    let questionNumber = currentQuestionIndex + 1;
-    questionEl.innerHTML = questionNumber + ". " + currentQuestion.question;
+    questionEl.innerHTML = (currentQuestionIndex + 1) + ". " + currentQuestion.question;
 
     currentQuestion.choices.forEach((choice, index) => {
         const button = document.createElement("button");
@@ -72,7 +86,7 @@ function displayQuestion() {
 
 function selectAnswer(selectedIndex){
 
-       if (answered) return;
+    if (answered) return;
     answered = true;
 
     const correctIndex = quizData[currentQuestionIndex].answer;
@@ -92,24 +106,31 @@ function selectAnswer(selectedIndex){
     nextButton.style.display= "block";
 }
 
-nextButton.addEventListener("click", ()=>{
+function nextHandler() {
     currentQuestionIndex++;
-
-    if(currentQuestionIndex < quizData.length){
-        displayQuestion();
-    }
-    else {
-        showResult();
-    }
-});
+    if (currentQuestionIndex < quizData.length) displayQuestion();
+    else showResult();
+}
 
 function showResult(){
-    document.querySelector(".questionBox").innerHTML =
-    `<h2>Your score: ${yourScore}/${quizData.length}</h2>
-     <button id="restartButton">Restart Quiz</button>
-    `;
+    
+    questionEl.innerHTML= `Your score:${yourScore}/${quizData.length}`;
 
-    document.getElementById("restartButton").addEventListener("click", startQuiz);
+    optionButton.innerHTML = "";
+    optionButton.style.display = "none";
+
+    nextButton.style.display = "none";
+
+    const restartBtn = document.createElement("button");
+    restartBtn.id = "restartButton";
+    restartBtn.textContent = "Restart Quiz";
+
+    document.querySelector(".questionBox").appendChild(restartBtn);
+
+    restartBtn.onclick = ()=> {
+        restartBtn.remove(); 
+        startQuiz();   
+    };
 }
 
 
