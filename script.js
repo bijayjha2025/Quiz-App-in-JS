@@ -107,6 +107,10 @@ let questionEl = document.querySelector(".questionBox h2");
 let optionButton = document.querySelector(".choicesButtons");
 let nextButton = document.getElementById("nextButton");
 
+let timerEl;
+let countDown;
+let timeLeft= 10;
+
 
 let currentQuestionIndex= 0;
 let yourScore = 0;
@@ -119,6 +123,7 @@ function startQuiz(){
     yourScore= 0;
 
     document.querySelector(".questionBox").innerHTML=`
+    <h3 id="timer">Time left: 10s</h3>
     <h2>Here will be question</h2>
     <div class="choicesButtons"></div>
     <button id="nextButton">Next</button>
@@ -127,6 +132,7 @@ function startQuiz(){
     questionEl = document.querySelector(".questionBox h2");
     optionButton = document.querySelector(".choicesButtons");
     nextButton = document.getElementById("nextButton");
+    timerEl = document.getElementById("timer");
 
     optionButton.style.display = "block";
     nextButton.style.display = "none";
@@ -152,6 +158,9 @@ function displayQuestion() {
         button.onclick = () => selectAnswer(index);
         optionButton.appendChild(button);
     });
+
+    resetTimer();
+    startTimer();
 }
 
 function selectAnswer(selectedIndex){
@@ -191,6 +200,8 @@ function showResult(){
 
     nextButton.style.display = "none";
 
+    timerEl.style.display="none";
+
     const restartBtn = document.createElement("button");
     restartBtn.id = "restartButton";
     restartBtn.textContent = "Restart Quiz";
@@ -203,5 +214,42 @@ function showResult(){
     };
 }
 
+function startTimer(){
+    timeLeft = 10;
+    timerEl.textContent= `Time left: ${timeLeft}s`;
+
+    countDown = setInterval(()=>{
+        timeLeft--;
+        timerEl.textContent = `Time left: ${timeLeft}s`;
+
+        if(timeLeft<=0){
+            clearInterval(countDown);
+            autoSelectAnswer();
+        }
+    }, 1000);
+}
+
+
+function resetTimer(){
+    clearInterval(countDown);
+    timeLeft = 10;
+    timerEl.textContent= `Time left:${timeLeft}s`;
+}
+
+
+function autoSelectAnswer() {
+    if (answered) return;
+    answered = true;
+
+    const correctIndex = quizData[currentQuestionIndex].answer;
+    const buttons = optionButton.querySelectorAll("button");
+
+    buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === correctIndex) btn.style.background = "lightgreen";
+    });
+
+    nextButton.style.display = "block";
+}
 
 startQuiz();
