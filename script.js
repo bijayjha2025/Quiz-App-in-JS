@@ -30,6 +30,76 @@ const quizData = [
         question: "Who is called the father of computer science?",
         choices: ["Charles Babbage", "Augusta Ada Lovelace", "Howard Aiken", "Blaise Pascal"],
         answer: 0
+    },
+     {
+        question: "Which is the smallest country in the world?",
+        choices: ["Monaco", "St. Kit and Nevis", "Vatican City", "Singapore"],
+        answer: 2
+    },
+     {
+        question: "Which is the longest country in the world?",
+        choices: ["Brazil", "Augusta Ada Russia", "China", "Chile"],
+        answer: 3
+    },
+     {
+        question: "Which is the smallest continent in the world?",
+        choices: ["Asia", "Australia", "Europe", "Africa"],
+        answer: 1
+    },
+     {
+        question: "How many oceans are there in the earth?",
+        choices: ["5", "7", "6", "4"],
+        answer: 0
+    },
+     {
+        question: "How many districts are there in Nepal?",
+        choices: ["75", "76", "77", "78"],
+        answer: 2
+    },
+    {
+        question: "Which district in Nepal is known as 'district of lakes'?",
+        choices: ["Kathmandu", "Dhanusha", "Kaski", "Sunsari"],
+        answer: 2
+    },
+    {
+        question: "Who wrote the national anthem of Nepal?",
+        choices: ["Pradeep Rai", "Chandra Gurung", "Byakul Maila", "Dharmaraj Thapa"],
+        answer:2
+    },
+    {
+    question: "Which is the largest lake in Nepal?",
+    choices: ["Phewa Lake", "Rara Lake", "Tilicho Lake", "Gosaikunda"],
+    answer: 1
+    },
+    {
+    question: "Which is the oldest temple in Nepal?",
+    choices: ["Pashupatinath", "Changu Narayan", "Swayambhu", "Budhanilkantha"],
+    answer: 1
+    },
+    {
+    question: "Which river is known as 'Sorrow of Bihar'?",
+    choices: ["Bagmati", "Karnali", "Koshi", "Gandaki"],
+    answer: 2
+    },
+    {
+    question: "Which mountain is nicknamed ‘Killer Mountain’?",
+    choices: ["Manaslu", "Lhotse", "Annapurna", "Dhaulagiri"],
+    answer: 2
+    },
+    {
+    question: "Which is the oldest national park of Nepal?",
+    choices: ["Shivapuri", "Sagarmatha", "Chitwan", "Banke"],
+    answer: 2
+    },
+    {
+    question: "The deepest lake of Nepal is?",
+    choices: ["Tilicho", "Phoksundo", "Rara", "Gosaikunda"],
+    answer: 1
+    },
+    {
+    question: "Which district of Nepal touches the highest number of other districts?",
+    choices: ["Sindhuli", "Kathmandu", "Bhaktapur", "Rasuwa"],
+    answer: 0
     }
     ];
 
