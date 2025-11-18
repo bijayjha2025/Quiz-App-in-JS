@@ -71,6 +71,7 @@ body{
     display: none;
 }
 
+
 #nextButton:hover{
     background: linear-gradient(90deg, rgb(203, 203, 241), rgb(185, 245, 185));
 }
@@ -101,4 +102,18 @@ body{
 
 #restartButton:active{
     background-color: rgb(147, 251, 216);
+}
+
+#timer{
+display: inline-block;
+background: #dbefff;
+padding: 10px 18px;
+border-radius: 12px;
+font-size: 16px;
+font-weight: 800;
+border: 1px solid #9fd4ff;
+color: #004c7a;
+margin-bottom: 20px;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
 }
