@@ -187,29 +187,41 @@ function selectAnswer(selectedIndex){
 
 function nextHandler() {
     currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) displayQuestion();
+    if (currentQuestionIndex < quizData.length)
+        {
+            displayQuestion();
+        }
     else showResult();
 }
 
 function showResult(){
     
-    questionEl.innerHTML= `Your score:${yourScore}/${quizData.length}`;
+    clearInterval(countDown);
 
-    optionButton.innerHTML = "";
-    optionButton.style.display = "none";
+    let storedHigh = updateHighscore();
+    let newHigh = yourScore == storedHigh;
 
-    nextButton.style.display = "none";
+    document.querySelector(".questionBox").innerHTML=`
+    <div class="resultCard ${newHigh ? "highlight" : ""}">
+     <h2>Quiz Completed!</h2>
+    
+    <div class="scoreBox">
+     <p>Your score:</p>
+     <h1>${yourScore} / ${quizData.length}</h1>
+    </div>
+    
+    <div class="highScoreBox">
+     <p>Highest Score:</p>
+     <h1>${storedHigh}</h1>
+    </div>
+    
+     ${newHigh ? `<p class="newHighScoreText">🏆 New High Score!</p>` : ""}
 
-    timerEl.style.display="none";
+     <button id="restartButton">Restart Quiz</button>
+    </div>
+    `;
 
-    const restartBtn = document.createElement("button");
-    restartBtn.id = "restartButton";
-    restartBtn.textContent = "Restart Quiz";
-
-    document.querySelector(".questionBox").appendChild(restartBtn);
-
-    restartBtn.onclick = ()=> {
-        restartBtn.remove(); 
+    document.getElementById("restartButton").onclick= ()=>{
         startQuiz();   
     };
 }
@@ -253,13 +265,17 @@ function autoSelectAnswer() {
 }
 
 function updateHighscore(){
-    let highScore = localStorage.getItem("highScore");
 
-    if(!highScore|| yourScore > highScore){
+    const storedHigh = localStorage.getItem("highScore");
+
+    if(!storedHigh|| yourScore > storedHigh){
         localStorage.setItem("highScore", yourScore);
-        highScore = yourScore;
+        return yourScore;
     }
-    return highScore;
+    return storedHigh;
 }
 
+function getHighScore(){
+    return localStorage.getItem("highScore") || 0;
+}
 startQuiz();
