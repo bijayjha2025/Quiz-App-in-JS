@@ -38,7 +38,7 @@ const quizData = [
     },
      {
         question: "Which is the longest country in the world?",
-        choices: ["Brazil", "Augusta Ada Russia", "China", "Chile"],
+        choices: ["Brazil", "Russia", "China", "Chile"],
         answer: 3
     },
      {
@@ -250,6 +250,16 @@ function autoSelectAnswer() {
     });
 
     nextButton.style.display = "block";
+}
+
+function updateHighscore(){
+    let highScore = localStorage.getItem("highScore");
+
+    if(!highScore|| yourScore > highScore){
+        localStorage.setItem("highScore", yourScore);
+        highScore = yourScore;
+    }
+    return highScore;
 }
 
 startQuiz();
