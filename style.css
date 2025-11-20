@@ -188,3 +188,25 @@ body.dark {
     background: #333;
     color: white;
 }
+
+#themeChange{
+    position: fixed;
+    top:20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    background: #f0f0f0;
+    color: #222;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) ;
+    transition: 0.3s ease;
+}
+
+#themeChange:hover{
+    background: #f3f3ec;
+    transform: scale(1.05);
+}
