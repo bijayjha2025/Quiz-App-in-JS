@@ -278,4 +278,11 @@ function updateHighscore(){
 function getHighScore(){
     return localStorage.getItem("highScore") || 0;
 }
+
+document.getElementById("themeChange").onclick = () => {
+    document.body.classList.toggle("dark");
+    document.querySelector(".mainContainer").classList.toggle("dark");
+};
+
+
 startQuiz();
