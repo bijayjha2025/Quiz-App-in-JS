@@ -235,3 +235,29 @@ body.dark {
 .dark .progressBar{
     background: linear-gradient(90deg, #57dd57, #5ac4ff);
 }
+
+.questionBox{
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.questionBox.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.option {
+    transition: background-color 0.3s ease, 
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.option:active {
+    transform: scale(0.98);
+}

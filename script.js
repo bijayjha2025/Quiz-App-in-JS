@@ -170,6 +170,7 @@ function displayQuestion() {
     startTimer();
 
     updateProgressBar();
+    animateQuestionBox();
 }
 
 function selectAnswer(selectedIndex){
@@ -302,5 +303,11 @@ function updateProgressBar(){
     progressBar.style.width = progressPercent + "%";
 }
 
-
+function animateQuestionBox(){
+    const box = document.querySelector(".questionBox");
+    box.classList.remove("show");
+    setTimeout(()=>{
+        box.classList.add("show");
+    }, 10);
+}
 startQuiz();
