@@ -124,6 +124,9 @@ const timesUpSound = new Audio("./Audios/timesupSound.wav");
 
 let optionButtons= [];
 
+let currentStreak= 0;
+let bestStreak= 0;
+
 function startQuiz(){
     currentQuestionIndex= 0;
     yourScore= 0;
@@ -203,11 +206,21 @@ function selectAnswer(selectedIndex){
         yourScore++;
         correctSound.currentTime= 0;
         correctSound.play();
+
+
+        currentStreak++;
+        if(currentStreak > bestStreak){
+            bestStreak = currentStreak;
+        }
     }
     else {
-    incorrectSound.currentTime = 0;
-    incorrectSound.play();
+        incorrectSound.currentTime = 0;
+        incorrectSound.play();
+        currentStreak= 0;
     }
+
+    document.getElementById("currentStreak").textContent = currentStreak;
+    document.getElementById("bestStreak").textContent = bestStreak;
 
     nextButton.style.display= "block";
 }
