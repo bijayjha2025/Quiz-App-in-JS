@@ -118,6 +118,10 @@ let answered= false;
 
 let progressBar = null;
 
+const correctSound = new Audio("./Audios/correctSound.wav");
+const incorrectSound = new Audio("./Audios/wrongSound.wav");
+const timesUpSound = new Audio("./Audios/timesupSound.wav");
+
 let optionButtons= [];
 
 function startQuiz(){
@@ -189,7 +193,13 @@ function selectAnswer(selectedIndex){
     });
 
     if(selectedIndex === correctIndex){
-        yourScore++; 
+        yourScore++;
+        correctSound.currentTime= 0;
+        correctSound.play();
+    }
+    else {
+    incorrectSound.currentTime = 0;
+    incorrectSound.play();
     }
 
     nextButton.style.display= "block";
@@ -270,6 +280,10 @@ function autoSelectAnswer() {
         btn.disabled = true;
         if (i === correctIndex) btn.style.background = "lightgreen";
     });
+
+    timesUpSound.currentTime = 0;
+    timesUpSound.play();
+
 
     nextButton.style.display = "block";
 }
