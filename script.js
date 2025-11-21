@@ -116,6 +116,8 @@ let currentQuestionIndex= 0;
 let yourScore = 0;
 let answered= false;
 
+let progressBar = null;
+
 let optionButtons= [];
 
 function startQuiz(){
@@ -123,11 +125,16 @@ function startQuiz(){
     yourScore= 0;
 
     document.querySelector(".questionBox").innerHTML=`
+    <div class="progressBarContainer">
+    <div class="progressBar" id="progressBar"></div>
+    </div>
     <h3 id="timer">Time left: 10s</h3>
     <h2>Here will be question</h2>
     <div class="choicesButtons"></div>
     <button id="nextButton">Next</button>
     `;
+
+    progressBar = document.getElementById("progressBar");
 
     questionEl = document.querySelector(".questionBox h2");
     optionButton = document.querySelector(".choicesButtons");
@@ -161,6 +168,8 @@ function displayQuestion() {
 
     resetTimer();
     startTimer();
+
+    updateProgressBar();
 }
 
 function selectAnswer(selectedIndex){
@@ -283,6 +292,15 @@ document.getElementById("themeChange").onclick = () => {
     document.body.classList.toggle("dark");
     document.querySelector(".mainContainer").classList.toggle("dark");
 };
+
+function updateProgressBar(){
+    const total = quizData.length;
+    const current = currentQuestionIndex;
+
+    const progressPercent = (current / total) * 100;
+
+    progressBar.style.width = progressPercent + "%";
+}
 
 
 startQuiz();
