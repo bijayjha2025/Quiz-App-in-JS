@@ -187,9 +187,16 @@ function selectAnswer(selectedIndex){
 
     buttons.forEach((btn, i) => {
         btn.disabled = true;
-        if (i === correctIndex) btn.style.background = "lightgreen";
-        if (i === selectedIndex && selectedIndex !== correctIndex)
+        if (i === correctIndex){
+            btn.style.background = "lightgreen";
+            btn.classList.add("correctAnimation");
+            setTimeout(()=>btn.classList.remove("correctAnimation"), 500);}
+
+        if (i === selectedIndex && selectedIndex !== correctIndex){
             btn.style.background = "salmon";
+            btn.classList.add("incorrectAnimation");
+            setTimeout(() => btn.classList.remove("incorrectAnimation"), 500);
+        }
     });
 
     if(selectedIndex === correctIndex){
@@ -265,7 +272,7 @@ function startTimer(){
 function resetTimer(){
     clearInterval(countDown);
     timeLeft = 10;
-    timerEl.textContent= `Time left:${timeLeft}s`;
+    timerEl.textContent= `Time left: ${timeLeft}s`;
 }
 
 
