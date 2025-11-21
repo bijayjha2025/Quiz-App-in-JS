@@ -210,3 +210,28 @@ body.dark {
     background: #f3f3ec;
     transform: scale(1.05);
 }
+.progressBarContainer{
+    width: 100%;
+    height: 10px;
+    background: rgba (0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progressBar{
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6ae46a, #6bd6ff);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.dark .progressBarContainer{
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dark .progressBar{
+    background: linear-gradient(90deg, #57dd57, #5ac);
+}
