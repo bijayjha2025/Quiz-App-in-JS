@@ -131,6 +131,11 @@ function startQuiz(){
     currentQuestionIndex= 0;
     yourScore= 0;
 
+    currentStreak = 0;
+    document.getElementById("currentStreak").textContent = currentStreak;
+    document.getElementById("bestStreak").textContent = bestStreak;
+
+
     document.querySelector(".questionBox").innerHTML=`
     <div class="progressBarContainer">
     <div class="progressBar" id="progressBar"></div>
@@ -303,6 +308,9 @@ function autoSelectAnswer() {
 
     timesUpSound.currentTime = 0;
     timesUpSound.play();
+
+    currentStreak= 0;
+    document.getElementById("currentStreak").textContent = currentStreak;
 
 
     nextButton.style.display = "block";
