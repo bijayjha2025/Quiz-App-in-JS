@@ -201,6 +201,14 @@ body.dark {
     color: white;
 }
 
+.dark #nextButton:hover{
+    background: rgb(252, 184, 184);
+}
+
+.dark #nextButton:active{
+    background: rgb(178, 234, 252);
+}
+
 #themeChange{
     position: fixed;
     top:5px;
